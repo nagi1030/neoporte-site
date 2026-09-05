@@ -3,18 +3,34 @@ let current = 0;
 const puzzles = {
 
 1:{
-title:"一つ目",
+title:"数字の順に並べてできる言葉は？",
 
 image:"images/数字の順に並べてできる言葉は.png",
 
 puzzleAnsImage:"images/数字の順に並べてできる言葉はAns.png",
 
-question:"数字の順に並べてできる言葉は？",
+question:"",
 
 answer:"ネオポルテ",
 
 hint:
 "画像に書かれているキャラ名を考えてみてください"
+},
+
+
+2:{
+title:"？に入る言葉は？",
+
+image:"images/基地徒歩しの.png",
+
+puzzleAnsImage:"images/基地徒歩しのAns.png",
+
+question:"",
+
+answer:"しの",
+
+hint:
+"ひらがなにして考えてみると？"
 },
 
 };
@@ -98,5 +114,5 @@ function showHint(){
 document
 .getElementById("hint")
 .innerText=
-"💡 "+puzzles[current].hint;
+puzzles[current].hint;
 }
