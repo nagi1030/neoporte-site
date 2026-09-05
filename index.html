@@ -1,140 +1,189 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAGI NAZO
-    </title>
+
+    <title>ネオポルテ謎解き</title>
 
     <link rel="stylesheet" href="nazo.css">
 </head>
 
 <body>
 
-<header>
-    <h1>ネオポルテ謎</h1>
-</header>
+    <!-- ヘッダー -->
+    <header>
+        <h1>ネオポルテ謎解き</h1>
+    </header>
 
 
-<nav>
-    <a href="#">ホーム</a>
-    <a href="#">問題一覧</a>
-</nav>
+    <!-- ナビゲーション -->
+    <nav>
+        <a href="#home">ホーム</a>
+        <a href="#nazo">謎解き</a>
+    </nav>
 
 
-<main>
+    <!-- メイン -->
+    <main id="home">
 
-<section class="search">
-    <input type="text" placeholder="問題を検索">
-    <button>検索</button>
-</section>
+        <h2 id="nazo">謎解き一覧</h2>
+
+        <div class="cards">
+
+            <!-- 問題1 -->
+            <div class="card">
+
+                <h3>第1問</h3>
+
+                <p class="level">
+                    ☆☆☆☆★
+                </p>
+
+                <p>
+                    数字の順に並べてできる言葉は？
+                </p>
+
+                <button onclick="openPuzzle(1)">
+                    挑戦する
+                </button>
+
+            </div>
 
 
-<h2>📚 問題一覧</h2>
+            <!-- 問題2 -->
+            <div class="card">
+
+                <h3>第2問</h3>
+
+                <p class="level">
+                    ☆☆☆★★
+                </p>
+
+                <p>
+                    ？に入る言葉は？
+                </p>
+
+                <button onclick="openPuzzle(2)">
+                    挑戦する
+                </button>
+
+            </div>
+
+        </div>
 
 
-<div class="cards">
+        <!-- 謎解き表示部分 -->
+        <section id="puzzle" class="puzzle hidden">
+
+            <h2 id="title"></h2>
 
 
-<div class="card">
-    <h3>問題１</h3>
+            <!-- 問題画像 -->
+            <img
+                id="puzzleImage"
+                src=""
+                alt="謎解き問題"
+            >
 
-    <p class="level">
-        ☆☆☆☆★
-    </p>
 
-    <p>
-        数字の順に並べてできる言葉は？
-    </p>
+            <!-- 問題文 -->
+            <p id="question"></p>
 
-    <button onclick="openPuzzle(1)">
-        挑戦する
-    </button>
-</div>
 
-</div>
+            <!-- 回答入力 -->
+            <input
+                id="answer"
+                type="text"
+                placeholder="答えを入力"
+            >
 
-<section id="puzzle" class="puzzle hidden">
 
-<h2 id="title"></h2>
+            <!-- 回答ボタン -->
+            <button onclick="checkAnswer()">
+                回答する
+            </button>
 
-<img id="puzzleImage" src="数字の順に並べてできる言葉は.png" alt="ネオポルテナゾトキ">
 
-<p id="question"></p>
+            <!-- 答えを見る -->
+            <button onclick="showAnswerConfirm()">
+                👀 答えを見る
+            </button>
 
-<input id="answer" placeholder="答えを入力">
 
-<button onclick="checkAnswer()">
-回答する
-</button>
+            <!-- ヒント -->
+            <button onclick="showHint()">
+                💡 ヒント
+            </button>
 
-<button onclick="showHint()">
-💡ヒント
-</button>
 
-<p id="hint"></p>
+            <!-- ヒント表示 -->
+            <p id="hint"></p>
 
-<p id="result"></p>
 
-<img id="puzzleAnsImage" src="数字の順に並べてできる言葉はAns.png" alt="解説画像" class="hidden">
+            <!-- 正解・不正解 -->
+            <p id="result"></p>
 
-</section>
 
-<div class="card">
-    <h3>問題２</h3>
+            <!-- 答えを見る確認画面 -->
+            <div id="answerConfirm" class="hidden">
 
-    <p class="level">
-        ☆☆☆☆★
-    </p>
+                <p>
+                    本当に答えを見ますか？
+                </p>
 
-    <p>
-        ？に入る言葉は？
-    </p>
+                <button onclick="showAnswer()">
+                    はい
+                </button>
 
-    <button onclick="openPuzzle(2)">
-        挑戦する
-    </button>
-</div>
+                <button onclick="cancelAnswer()">
+                    いいえ
+                </button>
 
-</div>
+            </div>
 
-<section id="puzzle" class="puzzle hidden">
 
-<h2 id="title"></h2>
+            <!-- 答え -->
+            <p
+                id="answerDisplay"
+                class="hidden"
+            ></p>
 
-<img id="puzzleImage" src="基地徒歩しの.png" alt="ネオポルテナゾトキ">
 
-<p id="question"></p>
+            <!-- 解説画像 -->
+            <img
+                id="puzzleAnsImage"
+                src=""
+                alt="解説画像"
+                class="hidden"
+            >
 
-<input id="answer" placeholder="答えを入力">
 
-<button onclick="checkAnswer()">
-回答する
-</button>
+            <!-- 解説文章 -->
+            <p
+                id="explanation"
+                class="hidden"
+            ></p>
 
-<button onclick="showHint()">
-ヒント
-</button>
+        </section>
 
-<p id="hint"></p>
+    </main>
 
-<p id="result"></p>
 
-<img id="puzzleAnsImage" src="基地徒歩しのAns.png" alt="解説画像" class="hidden">
+    <!-- フッター -->
+    <footer>
 
-</section>
+        <p>
+            © NAGI NAZO
+        </p>
 
-</main>
+    </footer>
 
-<footer>
 
-<p>
-© NAGI NAZO
-</p>
-
-</footer>
-
-<script src="nazo.js"></script>
+    <!-- JavaScript -->
+    <script src="nazo.js"></script>
 
 </body>
+
 </html>

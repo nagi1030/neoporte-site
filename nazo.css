@@ -1,63 +1,51 @@
+/* 全体 */
+
 body{
-
     margin:0;
-    font-family:
-    "Noto Sans JP",
-    sans-serif;
-
+    font-family:"Noto Sans JP", sans-serif;
     background:#f5f7fb;
-
     color:#333;
-
 }
 
 
+/* ヘッダー */
 
 header{
-    height: 200px;
+    height:200px;
 
-    background-image: url("images/neoporte header.png");
+    background-image:url("images/neoporte header.png");
 
-    background-size: contain;
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
 
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    background-color: #222;
+    background-color:#222;
 
     color:white;
 
     text-align:center;
 
     padding:80px 30px;
-
 }
-
 
 
 header h1{
-
     font-size:35px;
-
 }
 
 
+/* ナビゲーション */
 
 nav{
-
     background:white;
 
     padding:15px;
 
     text-align:center;
-
 }
 
 
-
 nav a{
-
     margin:20px;
 
     text-decoration:none;
@@ -65,43 +53,37 @@ nav a{
     color:#333;
 
     font-weight:bold;
-
 }
 
 
+/* メイン */
 
 main{
-
     width:90%;
 
     max-width:900px;
 
     margin:auto;
-
 }
 
 
+/* 検索 */
 
 .search{
-
     margin:30px 0;
-
 }
-
 
 
 .search input{
-
     width:70%;
 
     padding:12px;
-
 }
 
 
+/* ボタン */
 
 button{
-
     background:#292dff;
 
     color:white;
@@ -114,32 +96,27 @@ button{
 
     cursor:pointer;
 
+    margin:5px;
 }
-
 
 
 button:hover{
-
     opacity:0.8;
-
 }
 
 
+/* 問題カード */
 
 .cards{
-
     display:flex;
 
     gap:20px;
 
     flex-wrap:wrap;
-
 }
 
 
-
 .card{
-
     background:white;
 
     padding:20px;
@@ -148,23 +125,18 @@ button:hover{
 
     width:250px;
 
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.1);
-
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
-
 
 
 .level{
-
     color:#ffb300;
-
 }
 
 
+/* 謎解き */
 
 .puzzle{
-
     background:white;
 
     margin-top:40px;
@@ -172,41 +144,80 @@ button:hover{
     padding:30px;
 
     border-radius:15px;
-
 }
 
 
+/* 非表示 */
 
 .hidden{
-
     display:none;
-
 }
 
 
+/* 回答入力 */
 
 #answer{
-
     padding:12px;
 
     margin:20px;
-
 }
 
 
+/* 結果 */
 
 #result{
-
     font-size:22px;
 
     font-weight:bold;
-
 }
 
 
+/* 答え */
+
+#answerDisplay{
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+}
+
+
+/* 答え確認 */
+
+#answerConfirm{
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#f5f7fb;
+
+    border-radius:10px;
+
+    text-align:center;
+}
+
+
+/* 解説 */
+
+#explanation{
+    font-size:17px;
+
+    line-height:1.8;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#f5f7fb;
+
+    border-radius:10px;
+}
+
+
+/* フッター */
 
 footer{
-
     margin-top:50px;
 
     background:#222;
@@ -216,34 +227,39 @@ footer{
     text-align:center;
 
     padding:20px;
-
 }
+
+
+/* 問題画像 */
 
 #puzzleImage{
+    width:100%;
 
-width:100%;
+    max-width:600px;
 
-max-width:600px;
+    border-radius:15px;
 
-border-radius:15px;
-
-margin:20px 0;
-
+    margin:20px 0;
 }
 
-#puzzleAnsImage{
 
+/* 解説画像 */
+
+#puzzleAnsImage{
     width:100%;
+
     max-width:600px;
 
     margin-top:20px;
 
     border-radius:15px;
-
 }
 
-h1 {
-    color: white;
-    text-shadow: 
-        2px 2px 5px black;
+
+/* 見出し */
+
+h1{
+    color:white;
+
+    text-shadow:2px 2px 5px black;
 }

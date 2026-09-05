@@ -1,118 +1,301 @@
+/* 現在表示している問題 */
+
 let current = 0;
+
+
+/* 問題データ */
 
 const puzzles = {
 
-1:{
-title:"数字の順に並べてできる言葉は？",
+    1: {
 
-image:"images/数字の順に並べてできる言葉は.png",
+        title: "数字の順に並べてできる言葉は？",
 
-puzzleAnsImage:"images/数字の順に並べてできる言葉はAns.png",
+        image:
+            "images/数字の順に並べてできる言葉は.png",
 
-question:"",
+        puzzleAnsImage:
+            "images/数字の順に並べてできる言葉はAns.png",
 
-answer:"ネオポルテ",
+        question: "",
 
-hint:
-"画像に書かれているキャラ名を考えてみてください"
-},
+        answer: "ネオポルテ",
+
+        hint:
+            "画像に書かれているキャラ名を考えてみてください",
+
+        explanation:
+            "数字の順番にキャラクター名を並べると、「ネオポルテ」という言葉になります。"
+
+    },
 
 
-2:{
-title:"？に入る言葉は？",
+    2: {
 
-image:"images/基地徒歩しの.png",
+        title: "？に入る言葉は？",
 
-puzzleAnsImage:"images/基地徒歩しのAns.png",
+        image:
+            "images/基地徒歩しの.png",
 
-question:"",
+        puzzleAnsImage:
+            "images/基地徒歩しのAns.png",
 
-answer:"しの",
+        question: "",
 
-hint:
-"ひらがなにして考えてみると？"
-},
+        answer: "しの",
+
+        hint:
+            "ひらがなにして考えてみると？",
+
+        explanation:
+            "それぞれの文字をひらがなにして考えると、？に入る言葉は「しの」になります。"
+
+    }
 
 };
 
 
+
+/* 問題を開く */
+
 function openPuzzle(id){
 
-current=id;
+    /* 現在の問題を記録 */
 
-document
-.getElementById("puzzle")
-.classList
-.remove("hidden");
+    current = id;
 
-document
-.getElementById("title")
-.innerText=
-puzzles[id].title;
 
-document
-.getElementById("puzzleImage")
-.src=
-puzzles[id].image;
+    /* 問題データを取得 */
 
-document
-.getElementById("question")
-.innerText=
-puzzles[id].question;
+    const puzzle = puzzles[id];
 
-document
-.getElementById("hint")
-.innerText="";
 
-document
-.getElementById("result")
-.innerText="";
+    /* 問題表示 */
 
-window.scrollTo({
-top:600,
-behavior:"smooth"
-});
+    document
+        .getElementById("puzzle")
+        .classList.remove("hidden");
+
+
+    /* タイトル */
+
+    document
+        .getElementById("title")
+        .innerText = puzzle.title;
+
+
+    /* 問題画像 */
+
+    document
+        .getElementById("puzzleImage")
+        .src = puzzle.image;
+
+
+    /* 問題文 */
+
+    document
+        .getElementById("question")
+        .innerText = puzzle.question;
+
+
+    /* 回答欄をリセット */
+
+    document
+        .getElementById("answer")
+        .value = "";
+
+
+    /* ヒントをリセット */
+
+    document
+        .getElementById("hint")
+        .innerText = "";
+
+
+    /* 結果をリセット */
+
+    document
+        .getElementById("result")
+        .innerText = "";
+
+
+    /* 答えをリセット */
+
+    document
+        .getElementById("answerDisplay")
+        .innerText = "";
+
+    document
+        .getElementById("answerDisplay")
+        .classList.add("hidden");
+
+
+    /* 答え確認画面をリセット */
+
+    document
+        .getElementById("answerConfirm")
+        .classList.add("hidden");
+
+
+    /* 解説画像をリセット */
+
+    document
+        .getElementById("puzzleAnsImage")
+        .classList.add("hidden");
+
+
+    /* 解説文章をリセット */
+
+    document
+        .getElementById("explanation")
+        .innerText = "";
+
+    document
+        .getElementById("explanation")
+        .classList.add("hidden");
+
+
+    /* 問題の場所までスクロール */
+
+    document
+        .getElementById("puzzle")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
 }
 
 
+
+/* 答えを確認する */
 
 function checkAnswer(){
 
+    /* 入力された答え */
 
-let input=
-document
-.getElementById("answer")
-.value;
+    const userAnswer =
+        document
+            .getElementById("answer")
+            .value
+            .trim();
 
-if(input===puzzles[current].answer){
 
-document
-.getElementById("result")
-.innerText=
-"🎉 正解！";
+    /* 正解 */
 
-document
-.getElementById("puzzleAnsImage")
-.src=
-puzzles[current].puzzleAnsImage;
+    if(userAnswer === puzzles[current].answer){
 
-document
-.getElementById("puzzleAnsImage")
-.classList
-.remove("hidden");
+        document
+            .getElementById("result")
+            .innerText = "🎉 正解！";
 
-}else{
-document
-.getElementById("result")
-.innerText=
-"❌ 不正解！もう一度考えてみよう";
+
+        /* 解説画像を設定 */
+
+        document
+            .getElementById("puzzleAnsImage")
+            .src = puzzles[current].puzzleAnsImage;
+
+
+        /* 解説画像を表示 */
+
+        document
+            .getElementById("puzzleAnsImage")
+            .classList.remove("hidden");
+
+
+        /* 解説文章 */
+
+        document
+            .getElementById("explanation")
+            .innerText = puzzles[current].explanation;
+
+
+        /* 解説文章を表示 */
+
+        document
+            .getElementById("explanation")
+            .classList.remove("hidden");
+
+    }
+
+
+    /* 不正解 */
+
+    else{
+
+        document
+            .getElementById("result")
+            .innerText =
+            "❌ 不正解！もう一度考えてみよう";
+
+    }
+
 }
-}
+
+
+
+/* ヒントを表示 */
 
 function showHint(){
-document
-.getElementById("hint")
-.innerText=
-puzzles[current].hint;
+
+    document
+        .getElementById("hint")
+        .innerText =
+        "💡 ヒント：" + puzzles[current].hint;
+
+}
+
+
+
+/* 「答えを見る」を押したとき */
+
+function showAnswerConfirm(){
+
+    document
+        .getElementById("answerConfirm")
+        .classList.remove("hidden");
+
+}
+
+
+
+/* 「はい」を押したとき */
+
+function showAnswer(){
+
+    /* 答えを表示 */
+
+    document
+        .getElementById("answerDisplay")
+        .innerText =
+        "答え：" + puzzles[current].answer;
+
+
+    /* 答えを表示状態にする */
+
+    document
+        .getElementById("answerDisplay")
+        .classList.remove("hidden");
+
+
+    /* 確認画面を消す */
+
+    document
+        .getElementById("answerConfirm")
+        .classList.add("hidden");
+
+}
+
+
+
+/* 「いいえ」を押したとき */
+
+function cancelAnswer(){
+
+    /* 確認画面を消す */
+
+    document
+        .getElementById("answerConfirm")
+        .classList.add("hidden");
+
 }
